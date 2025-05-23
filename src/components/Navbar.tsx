@@ -21,11 +21,14 @@ export default function Navbar() {
         </button>
       </div>
 
-      <div>
+      <div
+        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        className="cursor-pointer"
+      >
         {theme === "dark" ? (
-          <Sun onClick={() => setTheme("light")} className="cursor-pointer" />
+          <Sun className="cursor-pointer" />
         ) : (
-          <Moon onClick={() => setTheme("dark")} className="cursor-pointer" />
+          <Moon className="cursor-pointer" />
         )}
       </div>
     </div>
