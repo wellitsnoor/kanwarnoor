@@ -1,36 +1,82 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
+import Link from "next/link";
 import { useTheme } from "next-themes";
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme();
-  return (
-    <div className="sticky flex w-full h-16 justify-between items-center px-10 bg-slate-100 dark:bg-black backdrop-blur-xl">
-      <div className="flex ">
-        <p className="text-3xl font-extrabold text-remaster">K</p>
-      </div>
+  const links = [
+    {
+      name: "Home",
+      href: "/",
+    },
+    {
+      name: "Projects",
+      href: "/projects",
+    },
 
-      <div className="absolute left-1/2 -translate-x-1/2 flex gap-10 items-center">
+    {
+      name: "Blog",
+      href: "/blog",
+    },
+    {
+      name: "Contact",
+      href: "/contact",
+    },
+  ];
+
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  };
+
+  return (
+    <>
+      <div className="sticky flex w-full h-16 justify-between items-center px-10">
+        <div className="absolute left-1/2 -translate-x-1/2 flex w-full text-center justify-center">
+          <p className="text-5xl font-extrabold text-remaster">K.</p>
+        </div>
+
+        {/* <div className="absolute left-1/2 -translate-x-1/2 flex gap-10 items-center">
         <p>Home</p>
         <p>Projects</p>
         <p>Blog</p>
         <button className="dark:bg-white dark:text-black bg-black text-white px-4 py-2 rounded-md">
           Contact
         </button>
-      </div>
+      </div> */}
 
-      <div
-        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        className="cursor-pointer"
-      >
-        {theme === "dark" ? (
-          <Sun className="cursor-pointer" />
-        ) : (
-          <Moon className="cursor-pointer" />
+        {mounted && (
+          <div
+            onClick={toggleTheme}
+            className="cursor-pointer z-10 ml-auto"
+            aria-label="Toggle theme"
+          >
+            {resolvedTheme === "dark" ? (
+              <Sun className="cursor-pointer size-6" />
+            ) : (
+              <Moon className="cursor-pointer size-6" />
+            )}
+          </div>
         )}
       </div>
-    </div>
+
+      <div className="absolute bottom-0 h-10 flex w-full text-center justify-center mb-5">
+        <div className="flex gap-14 font-bold text-remaster items-center justify-center">
+          {links.map((link) => (
+            <Link href={link.href} key={link.name}>
+              {link.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
