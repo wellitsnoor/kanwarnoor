@@ -39,9 +39,11 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="sticky flex w-full h-16 justify-between items-center px-10">
+      <div className="fixed top-0 flex w-full h-16 justify-between items-center px-10 z-10">
         <div className="absolute left-1/2 -translate-x-1/2 flex w-full text-center justify-center">
-          <p className="text-5xl font-extrabold text-remaster">K.</p>
+          <Link href="/" className="text-5xl font-extrabold text-remaster mb-1">
+            K.
+          </Link>
         </div>
 
         {/* <div className="absolute left-1/2 -translate-x-1/2 flex gap-10 items-center">
@@ -68,7 +70,7 @@ export default function Navbar() {
         )}
       </div>
 
-      <div className="absolute bottom-0 h-10 flex w-full text-center justify-center mb-5">
+      <div className="fixed bottom-0 h-10 flex w-full text-center justify-center mb-5">
         <div className="flex gap-14 font-bold text-remaster items-center justify-center">
           {links.map((link) => (
             <Link href={link.href} key={link.name}>

@@ -3,6 +3,7 @@ import { Gabarito } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const gabarito = Gabarito({
   subsets: ["latin"],
@@ -22,11 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${gabarito.variable} ${gabarito.variable} antialiased dark:bg-neutral-900 dark:text-white bg-white text-black animate-all duration-300`}
+        className={`${gabarito.variable} ${gabarito.variable} antialiased dark:bg-black dark:text-white bg-white text-black animate-all duration-300`}
       >
         <Provider>
           <Navbar />
           {children}
+          <Footer />
         </Provider>
       </body>
     </html>
