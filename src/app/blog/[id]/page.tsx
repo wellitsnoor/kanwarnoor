@@ -2,14 +2,8 @@ import { notFound } from "next/navigation";
 import React from "react";
 import Image from "next/image";
 
-type Props = {
-  params: {
-    id: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
 
-export default async function Page({ params }: Props) {
+export default function Page({ params }: { params: { id: string } }) {
   if (params.id !== "1") {
     return notFound();
   }
