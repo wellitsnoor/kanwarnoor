@@ -2,8 +2,13 @@ import { notFound } from "next/navigation";
 import React from "react";
 import Image from "next/image";
 
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
 
-export default function Page({ params }: { params: { id: string } }) {
+export default function Page({ params }: PageProps) {
   if (params.id !== "1") {
     return notFound();
   }
