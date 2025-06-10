@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
-import { Gabarito } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Provider from "./provider";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
-const gabarito = Gabarito({
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  variable: "--font-gabarito",
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "Kanwarnoor",
-  description: "Kanwarnoor's portfolio",
+  description: "Personal website of Kanwarnoor",
 };
 
 export default function RootLayout({
@@ -21,15 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
-        className={`${gabarito.variable} ${gabarito.variable} antialiased dark:bg-black dark:text-white bg-white text-black animate-all duration-300`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Provider>
-          <Navbar />
-          {children}
-          <Footer />
-        </Provider>
+        {children}
       </body>
     </html>
   );
