@@ -154,7 +154,7 @@ export default function page() {
             </h1>
             <a
               href="https://instagram.com/wellitsnoor"
-              className="md:block hidden"
+              className="md:block hidden -translate-y-[100%]"
             >
               @wellitsnoor
             </a>
