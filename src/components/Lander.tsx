@@ -1,9 +1,10 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Lander() {
-
 
   return (
     <div className="w-full h-screen bg-black flex flex-row items-center justify-center">
@@ -20,7 +21,7 @@ export default function Lander() {
             href="/contact"
             className="text-base w-fit bg-white text-black px-4  py-2 rounded-xl"
           >
-           Hire me
+            Hire me
           </Link>
           <Link
             href="#more"
@@ -32,7 +33,7 @@ export default function Lander() {
       </div>
       <div className="w-1/2 h-full">
         <Image
-          src="/.jpg"
+          src={"/me.jpg"}
           alt=""
           width={0}
           height={0}
