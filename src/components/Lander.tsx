@@ -24,7 +24,7 @@ export default function Lander() {
             Hire me
           </Link>
           <Link
-            href="#more"
+            href="#projects"
             className="text-base  w-fit border-2 text-white  px-4 py-2 rounded-xl"
           >
             Know more
@@ -33,7 +33,7 @@ export default function Lander() {
       </div>
       <div className="w-1/2 h-full">
         <Image
-          src={"/me.jpg"}
+          src={"/"}
           alt=""
           width={0}
           height={0}

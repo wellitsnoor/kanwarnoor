@@ -6,11 +6,11 @@ export default function Page() {
     <>
       <Lander />
 
-      <div className="w-full h-screen bg-black flex flex-row items-center justify-center">
+      <section id="projects" className="w-full h-screen bg-black flex flex-row items-center justify-center">
         <div className="w-full h-full flex flex-col justify-center items-center ">
           <p>Projects</p>
         </div>
-      </div>
+      </section>
 
       <div className="w-full h-screen bg-black flex flex-row items-center justify-center">
         <div className="w-full h-full flex flex-col justify-center items-center ">
