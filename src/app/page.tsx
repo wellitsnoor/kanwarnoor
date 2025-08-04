@@ -1,5 +1,6 @@
 import React from "react";
 import Lander from "@/components/Lander";
+import Projects from "@/components/Projects";
 
 export default function Page() {
   return (
@@ -7,9 +8,7 @@ export default function Page() {
       <Lander />
 
       <section id="projects" className="w-full h-screen bg-black flex flex-row items-center justify-center">
-        <div className="w-full h-full flex flex-col justify-center items-center ">
-          <p>Projects</p>
-        </div>
+       <Projects/>
       </section>
 
       <div className="w-full h-screen bg-black flex flex-row items-center justify-center">
@@ -23,9 +22,15 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="w-full h-screen bg-black flex flex-row items-center justify-center">
+      <div className="w-full h-screen bg-white text-black flex flex-row items-center justify-center">
         <div className="w-full h-full flex flex-col justify-center items-center ">
           <p>Contact</p>
+        </div>
+      </div>
+
+      <div className="w-full h-screen bg-black text-white flex flex-row items-center justify-center">
+        <div className="w-full h-full flex flex-col justify-center items-center ">
+          <p>Footer</p>
         </div>
       </div>
     </>

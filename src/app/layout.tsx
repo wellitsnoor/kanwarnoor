@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Inter, DM_Serif_Text } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["200", "300", "400", "500", "600", "700"],
+  variable: "--font-inter",
+});
+
+const dmSerifText = DM_Serif_Text({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-dm-serif",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} bg-black text-white antialiased`}
+        className={`${inter.variable} ${dmSerifText.variable}  bg-black text-white antialiased`}
       >
         <Navbar />
         {children}

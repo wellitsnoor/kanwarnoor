@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Navbar() {
   const links = [
@@ -12,15 +12,15 @@ export default function Navbar() {
     },
     {
       name: "Projects",
-      href: "/projects",
+      href: "#projects",
     },
     {
       name: "Skills",
-      href: "/skills",
+      href: "#skills",
     },
     {
       name: "Blog",
-      href: "/blog",
+      href: "#blog",
     },
     {
       name: "Contact",
@@ -31,19 +31,96 @@ export default function Navbar() {
 
   const [path, setPath] = useState("");
 
+  const [scroll, setScroll] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY > 100);
+    });
+  }, []);
+
   React.useEffect(() => {
     setPath(window.location.pathname);
   }, []);
   return (
     <>
-      <div className="w-full h-16  flex flex-row items-center justify-center top-0 fixed z-50 ">
-        <p
-          className="text-3xl font-bold cursor-pointer"
+      <div className="w-full h-16 flex flex-row items-center top-0 absolute z-50">
+        <motion.p
+          initial={{
+            opacity: 0,
+            y: -100,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.5,
+          }}
+          className="text-3xl font-bold cursor-pointer title pl-10 z-10"
           onClick={() => setOpen(!open)}
         >
           K.
-        </p>
+        </motion.p>
+
+        <div className="absolute pr-10 flex flex-row ml-auto w-full h-full justify-center items-center ">
+          {!scroll && links.map((link, index) => (
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: -100,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 1,
+                delay: index * 0.1,
+              }}
+              key={index}
+              className="bg-red0 w-[10%] h-full flex items-center justify-center text-white"
+            >
+              <Link
+                key={index}
+                href={link.href}
+                className="text-base font-medium"
+              >
+                {link.name}
+              </Link>
+            </motion.div>
+          ))}
+        </div>
       </div>
+
+      <AnimatePresence>
+        {scroll && (
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: -100,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            exit={{
+              opacity: 0,
+            }}
+            transition={{
+              duration: 0.5,
+            }}
+            className="w-full h-16  flex flex-row items-center justify-center top-0 fixed z-50 "
+          >
+            <p
+              className="text-3xl font-bold cursor-pointer title"
+              onClick={() => setOpen(!open)}
+            >
+              K.
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {open && (

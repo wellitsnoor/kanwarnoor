@@ -4,3 +4,7 @@ html,
 body {
   scroll-behavior: smooth;
 }
+
+.title {
+  font-family: var(--font-dm-serif);
+}
