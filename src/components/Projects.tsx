@@ -1,12 +1,87 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import InfoCard from "./InfoCard";
+import useEmblaCarousel from "embla-carousel-react";
 
 export default function Projects() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: false,
+    align: "start",
+    dragFree: true,
+    containScroll: "trimSnaps",
+    skipSnaps: false,
+  });
+
+  const data = [
+    {
+      title: "Remaster",
+      des: "A platform for buying and selling music",
+      image: "/bully.jpg",
+      animation: "center",
+      link: "https://remaster.in/",
+      tags: ["all", "personal"],
+    },
+    {
+      title: "Ardent Co.",
+      des: "something",
+      image: "/bully.jpg",
+      animation: "center",
+      tags: ["all", "client"],
+    },
+    {
+      title: "Guru Nanak Dev University Website",
+      des: "something",
+      image: "/bully.jpg",
+      animation: "center",
+      tags: ["all", "client"],
+    },
+    {
+      title: "Fullscreen",
+      des: "something 2",
+      image: "/bully.jpg",
+      animation: "center",
+      tags: ["all", "personal"],
+    },
+  ];
+
+  const [filter, setFilter] = useState([
+    {
+      name: "All",
+      sort: 0,
+      active: true,
+    },
+    {
+      name: "Personal",
+      sort: 1,
+      active: false,
+    },
+    {
+      name: "Client",
+      sort: 2,
+      active: false,
+    },
+    {
+      name: "Collaboration",
+      sort: 3,
+      active: false,
+    },
+  ]);
+
+  const activeFilter = filter.find((f) => f.active)?.name.toLowerCase();
+
+  const filteredData = data.filter((item) => {
+    if (activeFilter === "all") return true;
+    return item.tags.includes(activeFilter || "");
+  });
+
+  useEffect(() => {
+    console.log(filteredData);
+  }, [filter]);
+
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center">
+    <div className="w-full h-full flex flex-col items-center justify-center overflow-hidden">
       <div className="flex flex-row">
         {Array.from("Projects").map((letter, index) => {
           return (
@@ -31,28 +106,68 @@ export default function Projects() {
           );
         })}
       </div>
-
-      <div className="pt-10 flex flex-row gap-10">
-        <InfoCard
-          title1={"Remaster"}
-          des="A platform for buying and selling music"
-          image={"/bully.jpg"}
-          animation={"center"}
-          link={"https://remaster.in/"}
-        />
-         <InfoCard
-          title1={"Ardent Co."}
-          des="something"
-          image={"/bully.jpg"}
-          animation={"center"}
-        />
-         <InfoCard
-          title1={"Fullscreen"}
-          des="something 2"
-          image={"/bully.jpg"}
-          animation={"center"}
-        />
-
+      <div className="flex mr-auto pt-5 pb-3 pl-10 flex-row  gap-10">
+        <div className="flex flex-row gap-3">
+          {filter.map((item, index) => {
+            return (
+              <p
+                key={index}
+                className={`text-base cursor-pointer font-bold rounded-full px-4 py-2 hover:scale-105 transition-all duration-300 hover:bg-white/50 hover:text-black ${
+                  item.active ? "bg-white text-black" : "bg-transparent"
+                }`}
+                onClick={() =>
+                  setFilter(
+                    filter.map((item, index1) => {
+                      if (index === index1) {
+                        return { ...item, active: true };
+                      }
+                      return { ...item, active: false };
+                    })
+                  )
+                }
+              >
+                <motion.span
+                  key={
+                    filter.sort((a, b) => Number(b.active) - Number(a.active))[
+                      index
+                    ].name
+                  }
+                  initial={{ x: 50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 1 }}
+                >
+                  {
+                    filter.sort((a, b) => Number(b.active) - Number(a.active))[
+                      index
+                    ].name
+                  }
+                </motion.span>
+              </p>
+            );
+          })}
+        </div>
+      </div>
+      <div className="overflow-hidden flex mr-auto pl-10" ref={emblaRef}>
+        <div className="flex flex-row gap-10">
+          {filteredData.length === 0 && (
+            <div className="flex flex-col">
+              <p className="flex text-2xl font-bold">
+                No projects found :/
+              </p>
+            </div>
+          )}
+          {filteredData.map((item) => {
+            return (
+              <InfoCard
+                title1={item.title}
+                des={item.des}
+                image={item.image}
+                link={item.link}
+                animation={"center"}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

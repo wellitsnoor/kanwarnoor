@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const links = [
@@ -27,6 +28,7 @@ export default function Navbar() {
       href: "/contact",
     },
   ];
+  const router = useRouter();
   const [open, setOpen] = useState(false);
 
   const [path, setPath] = useState("");
@@ -58,38 +60,39 @@ export default function Navbar() {
             duration: 0.5,
           }}
           className="text-3xl font-bold cursor-pointer title pl-10 z-10"
-          onClick={() => setOpen(!open)}
+          onClick={() => router.push("/")}
         >
           K.
         </motion.p>
 
         <div className="absolute pr-10 flex flex-row ml-auto w-full h-full justify-center items-center ">
-          {!scroll && links.map((link, index) => (
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: -100,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 1,
-                delay: index * 0.1,
-              }}
-              key={index}
-              className="bg-red0 w-[10%] h-full flex items-center justify-center text-white"
-            >
-              <Link
+          {!scroll &&
+            links.map((link, index) => (
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: -100,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 1,
+                  delay: index * 0.1,
+                }}
                 key={index}
-                href={link.href}
-                className="text-base font-medium"
+                className="bg-red0 w-[10%] h-full flex items-center justify-center text-white"
               >
-                {link.name}
-              </Link>
-            </motion.div>
-          ))}
+                <Link
+                  key={index}
+                  href={link.href}
+                  className="text-base font-medium"
+                >
+                  {link.name}
+                </Link>
+              </motion.div>
+            ))}
         </div>
       </div>
 
@@ -114,7 +117,7 @@ export default function Navbar() {
           >
             <p
               className="text-3xl font-bold cursor-pointer title"
-              onClick={() => setOpen(!open)}
+              onClick={() => router.push("/")}
             >
               K.
             </p>

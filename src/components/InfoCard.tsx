@@ -55,7 +55,7 @@ export default function InfoCard({
       //   amount: 0.3,
       // }}
       // onClick={() => setClicked1((clicked1) => !clicked1)}
-      className="flex flex-col cursor-pointer md:w-[400px] shadow-xl md:h-[450px] w-[300px] h-[350px] bg-black/50 backdrop-blur-xl rounded-2xl"
+      className="flex flex-col cursor-pointer md:w-[711.11px] shadow-xl md:h-[400px] w-[300px] h-[350px] bg-black/50 backdrop-blur-xl rounded-2xl"
     >
       {!clicked && (
         <div
