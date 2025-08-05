@@ -31,7 +31,7 @@ export default function Projects() {
       tags: ["all", "client"],
     },
     {
-      title: "Guru Nanak Dev University Website",
+      title: "Guru Nanak Dev University",
       des: "something",
       image: "/bully.jpg",
       animation: "center",
