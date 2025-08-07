@@ -110,13 +110,20 @@ export default function Projects() {
         <div className="flex flex-row gap-3">
           {filter.map((item, index) => {
             return (
-              <p
+              <motion.p
+                whileHover={{
+                  backgroundColor: "rgba(255, 255, 255, 0.5)",
+                  color: "black",
+                }}
+                animate={{
+                  backgroundColor:
+                    item.active === true
+                      ? "rgba(255, 255, 255, 1)"
+                      : "transparent",
+                  color: item.active === true ? "black" : "white",
+                }}
                 key={index}
-                className={`text-base cursor-pointer font-bold rounded-full px-4 py-2 hover:scale-105 transition-all duration-100 hover:bg-white/50 hover:text-black ${
-                  item.active === true
-                    ? "bg-white text-black"
-                    : "bg-transparent"
-                }`}
+                className={`text-base cursor-pointer font-bold rounded-full px-4 py-2  `}
                 onClick={() =>
                   setFilter(
                     filter.map((item, index1) => {
@@ -144,7 +151,7 @@ export default function Projects() {
                     ].name
                   }
                 </motion.span>
-              </p>
+              </motion.p>
             );
           })}
         </div>
