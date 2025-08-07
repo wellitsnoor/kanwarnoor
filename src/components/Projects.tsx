@@ -111,19 +111,23 @@ export default function Projects() {
           {filter.map((item, index) => {
             return (
               <motion.p
-                whileHover={{
-                  backgroundColor: "rgba(255, 255, 255, 0.5)",
-                  color: "black",
-                }}
-                animate={{
-                  backgroundColor:
-                    item.active === true
-                      ? "rgba(255, 255, 255, 1)"
-                      : "transparent",
-                  color: item.active === true ? "black" : "white",
-                }}
+                // initial={{
+                //   backgroundColor: "transparent",
+                //   color: "white",
+                // }}
+                // whileHover={{
+                //   backgroundColor: "rgba(255, 255, 255, 0.5)",
+                //   color: "black",
+                // }}
+                // animate={{
+                //   backgroundColor:
+                //     item.active === true
+                //       ? "rgba(255, 255, 255, 1)"
+                //       : "transparent",
+                //   color: item.active === true ? "black" : "white",
+                // }}
                 key={index}
-                className={`text-base cursor-pointer font-bold rounded-full px-4 py-2  `}
+                className={`text-base cursor-pointer font-bold rounded-full px-4 py-2 first:bg-white first:text-black`}
                 onClick={() =>
                   setFilter(
                     filter.map((item, index1) => {
