@@ -77,7 +77,7 @@ export default function Projects() {
   });
 
   useEffect(() => {
-    console.log(filteredData);
+    console.log(filter);
   }, [filter]);
 
   return (
@@ -112,8 +112,10 @@ export default function Projects() {
             return (
               <p
                 key={index}
-                className={`text-base cursor-pointer font-bold rounded-full px-4 py-2 hover:scale-105 transition-all duration-300 hover:bg-white/50 hover:text-black ${
-                  item.active ? "bg-white text-black" : "bg-transparent"
+                className={`text-base cursor-pointer font-bold rounded-full px-4 py-2 hover:scale-105 transition-all duration-100 hover:bg-white/50 hover:text-black ${
+                  item.active === true
+                    ? "bg-white text-black"
+                    : "bg-transparent"
                 }`}
                 onClick={() =>
                   setFilter(
@@ -151,9 +153,7 @@ export default function Projects() {
         <div className="flex flex-row gap-10">
           {filteredData.length === 0 && (
             <div className="flex flex-col">
-              <p className="flex text-2xl font-bold">
-                No projects found :/
-              </p>
+              <p className="flex text-2xl font-bold">No projects found :/</p>
             </div>
           )}
           {filteredData.map((item) => {
