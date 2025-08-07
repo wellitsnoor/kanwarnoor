@@ -4,10 +4,11 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import InfoCard from "./InfoCard";
 import useEmblaCarousel from "embla-carousel-react";
+import { div } from "framer-motion/client";
 
 export default function Projects() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: false,
+    loop: true,
     align: "start",
     dragFree: true,
     containScroll: "trimSnaps",
@@ -160,24 +161,46 @@ export default function Projects() {
           })}
         </div>
       </div>
-      <div className="overflow-hidden flex mr-auto pl-10" ref={emblaRef}>
-        <div className="flex flex-row gap-10">
+      <div className="overflow-hidden flex flex-col mr-auto pl-10" ref={emblaRef}>
+        <div className="flex flex-row gap-10 h-[25.5rem] w-[100vw] py-1 ">
           {filteredData.length === 0 && (
-            <div className="flex flex-col">
-              <p className="flex text-2xl font-bold">No projects found :/</p>
-            </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col justify-center items-center text-center pr-20 w-full"
+            >
+              <p className="flex text-2xl font-medium">No projects found :/</p>
+            </motion.div>
           )}
-          {filteredData.map((item) => {
+
+          {filteredData.map((item, index) => {
             return (
-              <InfoCard
-                title1={item.title}
-                des={item.des}
-                image={item.image}
-                link={item.link}
-                animation={"center"}
-              />
+              <div className="flex flex-col " key={index}>
+                <InfoCard
+                  title1={item.title}
+                  des={item.des}
+                  image={item.image}
+                  link={item.link}
+                  animation={"center"}
+                />
+              </div>
             );
           })}
+        </div>
+        <div className="flex flex-row gap-3 ml-auto  text-white w-fit my-5 items-center justify-between pr-20">
+          <p
+            className="text-base cursor-pointer font-bold rounded-full px-4 py-2 bg-white text-black"
+            onClick={() => emblaApi?.scrollPrev()}
+          >
+            left
+          </p>
+          <p
+            className="text-base cursor-pointer font-bold rounded-full px-4 py-2 bg-white text-black"
+            onClick={() => emblaApi?.scrollNext()}
+          >
+            right
+          </p>
         </div>
       </div>
     </div>
