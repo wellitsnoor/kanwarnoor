@@ -8,7 +8,7 @@ import { div } from "framer-motion/client";
 
 export default function Projects() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: true,
+    loop: false,
     align: "start",
     dragFree: true,
     containScroll: "trimSnaps",
@@ -128,7 +128,7 @@ export default function Projects() {
                 //   color: item.active === true ? "black" : "white",
                 // }}
                 key={index}
-                className={`text-base cursor-pointer font-bold rounded-full px-4 py-2 first:bg-white first:text-black`}
+                className={`text-base cursor-pointer font-bold rounded-full px-4 py-2 hover:bg-white/50 hover:text-black first:hover:bg-white first:hover:text-black first:bg-white first:text-black`}
                 onClick={() =>
                   setFilter(
                     filter.map((item, index1) => {
@@ -161,7 +161,10 @@ export default function Projects() {
           })}
         </div>
       </div>
-      <div className="overflow-hidden flex flex-col mr-auto pl-10" ref={emblaRef}>
+      <div
+        className="overflow-hidden flex flex-col mr-auto pl-10"
+        ref={emblaRef}
+      >
         <div className="flex flex-row gap-10 h-[25.5rem] w-[100vw] py-1 ">
           {filteredData.length === 0 && (
             <motion.div
@@ -189,18 +192,31 @@ export default function Projects() {
           })}
         </div>
         <div className="flex flex-row gap-3 ml-auto  text-white w-fit my-5 items-center justify-between pr-20">
-          <p
-            className="text-base cursor-pointer font-bold rounded-full px-4 py-2 bg-white text-black"
-            onClick={() => emblaApi?.scrollPrev()}
-          >
-            left
-          </p>
-          <p
-            className="text-base cursor-pointer font-bold rounded-full px-4 py-2 bg-white text-black"
-            onClick={() => emblaApi?.scrollNext()}
-          >
-            right
-          </p>
+         
+            <svg
+              
+              className="size-10 bg-white rounded-full p-1 cursor-pointer"
+              viewBox="-8.5 0 32 32"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              onClick={() => emblaApi?.scrollPrev()}
+            >
+              <title>left</title>
+              <path d="M7.094 15.938l7.688 7.688-3.719 3.563-11.063-11.063 11.313-11.344 3.531 3.5z"></path>
+            </svg>
+
+            <svg
+              
+              className="size-10 bg-white rounded-full p-1 cursor-pointer rotate-180"
+              viewBox="-8.5 0 32 32"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              onClick={() => emblaApi?.scrollNext()}
+            >
+              <title>left</title>
+              <path d="M7.094 15.938l7.688 7.688-3.719 3.563-11.063-11.063 11.313-11.344 3.531 3.5z"></path>
+            </svg>
+         
         </div>
       </div>
     </div>
