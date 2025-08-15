@@ -2,7 +2,7 @@ import React from "react";
 import Lander from "@/components/Lander";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
-import Contact from "./contact/page";
+import Contact from "@/components/Contact";
 
 export default function Page() {
   return (
