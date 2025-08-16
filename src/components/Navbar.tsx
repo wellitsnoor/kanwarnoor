@@ -25,7 +25,7 @@ export default function Navbar() {
     },
     {
       name: "Contact",
-      href: "/contact",
+      href: "/#contact",
     },
   ];
   const router = useRouter();

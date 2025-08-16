@@ -29,9 +29,12 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="w-full h-screen bg-white text-black flex flex-row items-center justify-center">
+      <section
+        id="contact"
+        className="w-full h-screen bg-white text-black flex flex-row items-center justify-center"
+      >
         <Contact />
-      </div>
+      </section>
 
       <div className="w-full h-screen bg-black text-white flex flex-row items-center justify-center">
         <div className="w-full h-full flex flex-col justify-center items-center ">

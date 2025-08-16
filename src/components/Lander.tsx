@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Butten from "./Butten";
 
 export default function Lander() {
   return (
@@ -41,18 +42,8 @@ export default function Lander() {
         </p>
 
         <div className="flex flex-row gap-3 mt-10">
-          <Link
-            href="/contact"
-            className="text-base w-fit bg-white text-black px-4  py-2 flex items-center justify-center"
-          >
-            Hire me
-          </Link>
-          <Link
-            href="#projects"
-            className="text-base w-fit border-2 border-dashed text-white  px-4 py-2"
-          >
-            Know more
-          </Link>
+          <Butten type="primary" link="/#contact" text="Hire me" />
+          <Butten type="secondary" link="#projects" text="Know more" />
         </div>
       </div>
       <div className="w-1/2 h-full">
