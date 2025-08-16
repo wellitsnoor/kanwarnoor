@@ -42,8 +42,8 @@ export default function Lander() {
         </p>
 
         <div className="flex flex-row gap-3 mt-10">
-          <Butten type="primary" link="/#contact" text="Hire me" />
-          <Butten type="secondary" link="#projects" text="Know more" />
+          <Butten type="primary" theme="dark" link="/#contact" text="Hire me" />
+          <Butten type="secondary" theme="dark" link="#projects" text="Know more" />
         </div>
       </div>
       <div className="w-1/2 h-full">
