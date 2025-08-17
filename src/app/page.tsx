@@ -31,7 +31,7 @@ export default function Page() {
 
       <section
         id="contact"
-        className="w-full h-screen bg-white text-black flex flex-row items-center justify-center"
+        className="w-full h-screen bg-white text-black flex flex-row items-center justify-center overflow-hidden"
       >
         <Contact />
       </section>

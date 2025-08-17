@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import Butten from "./Butten";
+import Butten from "./Button";
 
 export default function Lander() {
   return (
@@ -43,7 +43,12 @@ export default function Lander() {
 
         <div className="flex flex-row gap-3 mt-10">
           <Butten type="primary" theme="dark" link="/#contact" text="Hire me" />
-          <Butten type="secondary" theme="dark" link="#projects" text="Know more" />
+          <Butten
+            type="secondary"
+            theme="dark"
+            link="#projects"
+            text="Know more"
+          />
         </div>
       </div>
       <div className="w-1/2 h-full">
