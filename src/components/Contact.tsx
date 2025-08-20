@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -14,13 +15,34 @@ export default function Contact() {
     loading: false,
   });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setForm({ ...form, error: false, loading: true });
 
-    setTimeout(() => {
-      setForm({ ...form, error: false, success: true, loading: false });
-    }, 1000);
+
+    try{
+      const res = await axios.post("/api/send", {
+        name: form.name,
+        email: form.email,
+        message: form.message,
+      });
+    } catch (error) {
+      setForm({
+        ...form,
+        error: true,
+        loading: false,
+        message: "Error sending message! :(",
+      });
+      return;
+    }
+
+    setForm({
+      ...form,
+      error: false,
+      success: true,
+      loading: false,
+      message: "",
+    });
   };
 
   return (

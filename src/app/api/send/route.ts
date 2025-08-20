@@ -13,29 +13,34 @@ let trasnporter = nodemailer.createTransport({
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, name, message } = await req.json();
-
-    if (!email || !name || !message) {
-      return NextResponse.json(
-        { message: "Missing required fields" },
-        { status: 400 }
-      );
+    const origin = req.headers.get("origin");
+    if (origin !== process.env.NEXT_PUBLIC_URL) {
+      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    await trasnporter.sendMail({
-      from: `"Kanwarnoor.com" <${process.env.SMTP_FROM}>`,
-      replyTo: email,
-      to: "wellitsnoor@gmail.com",
-      subject: `Contact form submitted by ${name}`,
-      text: `
-      Name: ${name}
-      Email: ${email}
-      Message: ${message}
-      `,
-      html: `<p>${name}</p>
-      <p>${email},</p>
-      <p>${message}</p>`,
-    });
+    const { email, name, message } = await req.json();
+
+    // if (!email || !name || !message) {
+    //   return NextResponse.json(
+    //     { message: "Missing required fields" },
+    //     { status: 400 }
+    //   );
+    // }
+
+    // await trasnporter.sendMail({
+    //   from: `"Kanwarnoor.com" <${process.env.SMTP_FROM}>`,
+    //   replyTo: email,
+    //   to: "wellitsnoor@gmail.com",
+    //   subject: `Contact form submitted by ${name}`,
+    //   text: `
+    //   Name: ${name}
+    //   Email: ${email}
+    //   Message: ${message}
+    //   `,
+    //   html: `<p>${name}</p>
+    //   <p>${email},</p>
+    //   <p>${message}</p>`,
+    // });
 
     return NextResponse.json({ message: "Message sent successfully" });
   } catch (error) {
