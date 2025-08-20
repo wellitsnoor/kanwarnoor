@@ -24,7 +24,7 @@ const dynamoClient = new DynamoDBClient({
 });
 
 const RATE_LIMIT = 2;
-const RATE_LIMIT_TIME = 60000;
+const RATE_LIMIT_TIME = 86400; // 1 day
 
 export async function POST(req: NextRequest) {
   try {
@@ -49,10 +49,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
+    const now = Math.floor(Date.now() / 1000);
+    const window = Math.floor(now / RATE_LIMIT_TIME);
+
     const getCommand = new GetItemCommand({
       TableName: "ratelimit",
       Key: {
-        ip: { S: ip },
+        ip: { S: ip + "#" + window.toString() },
       },
     });
 
@@ -61,43 +64,23 @@ export async function POST(req: NextRequest) {
 
     if (item) {
       const count = Number(item.count.N);
-      const time = Date.now();
 
-      if (time - Number(item.time.N) > RATE_LIMIT_TIME) {
-        const command = new UpdateItemCommand({
-          TableName: "ratelimit",
-          Key: { ip: { S: ip } },
-          UpdateExpression: "SET #count = :count, #time = :time",
-          ExpressionAttributeNames: {
-            "#count": "count",
-            "#time": "time",
-          },
-          ExpressionAttributeValues: {
-            ":count": { N: "0" },
-            ":time": { N: time.toString() },
-          },
-        });
-        await dynamoClient.send(command);
-      }
-
-      if (count === RATE_LIMIT) {
+      if (count >= RATE_LIMIT) {
         return NextResponse.json(
-          { message: "Rate limit exceeded" },
+          { message: "Rate limit exceeded, come back tommorow!" },
           { status: 429 }
         );
       }
 
       const command = new UpdateItemCommand({
         TableName: "ratelimit",
-        Key: { ip: { S: ip } },
-        UpdateExpression: "SET #count = :count, #time = :time",
+        Key: { ip: { S: ip + "#" + window.toString() } },
+        UpdateExpression: "SET #count = :count",
         ExpressionAttributeNames: {
           "#count": "count",
-          "#time": "time",
         },
         ExpressionAttributeValues: {
           ":count": { N: (count + 1).toString() },
-          ":time": { N: time.toString() },
         },
       });
       await dynamoClient.send(command);
@@ -105,9 +88,8 @@ export async function POST(req: NextRequest) {
       const putCommand = new PutItemCommand({
         TableName: "ratelimit",
         Item: {
-          ip: { S: ip },
+          ip: { S: ip + "#" + window.toString() },
           count: { N: "1" },
-          time: { N: Date.now().toString() },
         },
       });
       await dynamoClient.send(putCommand);
@@ -115,15 +97,15 @@ export async function POST(req: NextRequest) {
 
     // send email
     const emailCommand = new SendEmailCommand({
-      Source: "contact@kanwarnoor.com",
+      Source: `Kanwarnoor.com <contact@kanwarnoor.com>`,
       Destination: {
         ToAddresses: ["wellitsnoor@gmail.com"],
       },
       Message: {
-        Subject: { Data: "Contact form submitted" },
+        Subject: { Data: `Contact form submitted by ${name} (${email})` },
         Body: {
           Text: {
-            Data: `${name}\n${email}\n${message}`,
+            Data: `${message}`,
           },
         },
       },

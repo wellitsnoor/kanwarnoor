@@ -11,6 +11,7 @@ export default function Contact() {
     email: "",
     message: "",
     error: false,
+    errorMessage: "",
     success: false,
     loading: false,
   });
@@ -19,29 +20,39 @@ export default function Contact() {
     e.preventDefault();
     setForm({ ...form, error: false, loading: true });
 
-
-    try{
+    try {
       const res = await axios.post("/api/send", {
         name: form.name,
         email: form.email,
         message: form.message,
       });
     } catch (error) {
+      let errorMessage = "Something went wrong";
+      
+      if (axios.isAxiosError(error) && error.response?.data?.message) {
+        errorMessage = error.response.data.message;
+      } else if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      
       setForm({
         ...form,
         error: true,
         loading: false,
-        message: "Error sending message! :(",
+        errorMessage,
       });
       return;
     }
 
     setForm({
       ...form,
+      name: "",
+      email: "",
+      message: "",
       error: false,
       success: true,
       loading: false,
-      message: "",
+      errorMessage: "",
     });
   };
 
@@ -141,6 +152,10 @@ export default function Contact() {
                     <input
                       type="text"
                       name="name"
+                      value={form.name}
+                      onChange={(e) =>
+                        setForm({ ...form, name: e.target.value })
+                      }
                       required
                       className="bg-transparent border-2 px-3 py-2 border-black text-black"
                     />
@@ -151,6 +166,10 @@ export default function Contact() {
                     <input
                       type="email"
                       name="email"
+                      value={form.email}
+                      onChange={(e) =>
+                        setForm({ ...form, email: e.target.value })
+                      }
                       required
                       className="bg-transparent border-2 px-3 py-2 border-black text-black"
                     />
@@ -160,6 +179,10 @@ export default function Contact() {
                     <label htmlFor="message">Message</label>
                     <textarea
                       name="message"
+                      value={form.message}
+                      onChange={(e) =>
+                        setForm({ ...form, message: e.target.value })
+                      }
                       required
                       className="px-3 py-2 border-2 border-black text-black resize-y max-h-36"
                     ></textarea>
@@ -186,7 +209,7 @@ export default function Contact() {
                   </div>
                   {form.error && (
                     <p className="text-red-500 flex justify-center items-center">
-                      {form.message || "Something went wrong"}
+                      {form.errorMessage || "Something went wrong"}
                     </p>
                   )}
                 </form>
