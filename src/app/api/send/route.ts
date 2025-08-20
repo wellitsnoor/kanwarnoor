@@ -14,7 +14,7 @@ let trasnporter = nodemailer.createTransport({
 export async function POST(req: NextRequest) {
   try {
     const origin = req.headers.get("origin");
-    if (origin !== process.env.NEXT_PUBLIC_URL) {
+    if (origin !== process.env.URL) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
