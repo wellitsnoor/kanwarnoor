@@ -10,7 +10,7 @@ import { NextRequest, NextResponse } from "next/server";
 const sesClient = new SESClient({
   region: process.env.AWS_REGION,
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS!,
+    accessKeyId: process.env.AWS_CLIENT!,
     secretAccessKey: process.env.AWS_SECRET!,
   },
 });
@@ -18,7 +18,7 @@ const sesClient = new SESClient({
 const dynamoClient = new DynamoDBClient({
   region: process.env.AWS_REGION,
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS!,
+    accessKeyId: process.env.AWS_CLIENT!,
     secretAccessKey: process.env.AWS_SECRET!,
   },
 });
