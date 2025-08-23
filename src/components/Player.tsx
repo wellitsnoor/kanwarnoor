@@ -6,14 +6,18 @@ import Image from "next/image";
 export default function Player() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // Create audio element inside useEffect to avoid SSR issues
-    if (typeof window !== "undefined") {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    // Only create audio element after component is mounted on client
+    if (isMounted) {
       audioRef.current = new Audio("/audios/layers.mp3");
       audioRef.current.loop = true;
       audioRef.current.preload = "auto";
-
       audioRef.current.volume = 0.5;
     }
 
@@ -24,7 +28,7 @@ export default function Player() {
         audioRef.current = null;
       }
     };
-  }, []);
+  }, [isMounted]);
 
   // Handle play/pause when SVG buttons are clicked
   const handlePlayPause = async () => {
@@ -43,10 +47,14 @@ export default function Player() {
     }
   };
 
+  // Don't render until client-side hydration is complete
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <>
       <div className="absolute fixed bottom-0 m-5 right-0  bg-front/70 backdrop-blur-sm p-2 rounded-xl z-40">
-        <audio ref={audioRef} src="/audios/layers.mp3" autoPlay />
         <div className="flex flex-row items-center justify-center gap-2">
           <Image
             src="/images/cristobal.jpg"

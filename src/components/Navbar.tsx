@@ -19,7 +19,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="absolute fixed top-0 m-5">
+      <div className="absolute fixed top-0 m-5 z-40">
         <Image src="/logo/logo-white.png" alt="logo" width={35} height={35} />
       </div>
 
