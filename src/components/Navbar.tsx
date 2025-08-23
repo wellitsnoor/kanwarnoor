@@ -46,7 +46,7 @@ export default function Navbar() {
   }, []);
   return (
     <>
-      <div className="w-full h-16 flex flex-row items-center top-0 absolute z-50">
+      <div className="w-full h-16 flex flex-row items-center top-0 absolute z-40">
         <motion.p
           initial={{
             opacity: 0,

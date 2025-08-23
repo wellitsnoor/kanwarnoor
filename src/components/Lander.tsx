@@ -10,7 +10,7 @@ export default function Lander() {
   return (
     <div className="w-full h-screen bg-black flex flex-row items-center justify-center">
       <div className="w-1/2 h-full flex flex-col pl-40 justify-center ">
-        <div className="flex flex-row">
+        <div className="flex flex-row -z-10">
           {Array.from("Kanwarnoor").map((letter, index) => {
             return (
               <motion.p

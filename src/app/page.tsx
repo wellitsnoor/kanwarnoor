@@ -3,11 +3,16 @@ import Lander from "@/components/Lander";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
+import Loader from "@/components/Loader";
+import Navbar from "@/components/Navbar";
 
 export default function Page() {
   return (
     <>
+      <Loader />
       <Lander />
+
+      <Navbar />
 
       <section
         id="projects"

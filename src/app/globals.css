@@ -1,4 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Braah+One&family=Oswald:wght@200..700&display=swap');
+
 @import "tailwindcss";
+
+/* Custom Tailwind Colors */
+@theme {
+  --color-front: #850000;
+  --color-back: #250000;
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-oswald: "Oswald", sans-serif;
+  --font-braah: "Braah One", sans-serif;
+}
 
 html,
 body {
@@ -8,7 +19,6 @@ body {
 .title {
   font-family: var(--font-dm-serif);
 }
-
 
 .white-spinner {
   border-radius: 50%;
@@ -34,8 +44,6 @@ body {
   -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 9px), #000 0);
   animation: spinner 1s infinite linear;
 }
-
-
 
 @keyframes spinner {
   100% {

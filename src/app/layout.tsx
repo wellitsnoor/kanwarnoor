@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, DM_Serif_Text } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
@@ -9,11 +9,6 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const dmSerifText = DM_Serif_Text({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-dm-serif",
-});
 
 export const metadata: Metadata = {
   title: "Kanwarnoor",
@@ -28,9 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${dmSerifText.variable}  bg-black text-white antialiased`}
+        className={`${inter.variable} bg-black text-white antialiased`}
       >
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
       </body>
     </html>
