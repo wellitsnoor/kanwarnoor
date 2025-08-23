@@ -1,66 +1,47 @@
 "use client";
-
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import Butten from "./Button";
+import Button from "./Button";
 
 export default function Lander() {
   return (
-    <div className="w-full h-screen bg-black flex flex-row items-center justify-center">
-      <div className="w-1/2 h-full flex flex-col pl-40 justify-center ">
-        <div className="flex flex-row -z-10">
-          {Array.from("Kanwarnoor").map((letter, index) => {
-            return (
-              <motion.p
-                key={index}
-                initial={{
-                  opacity: 0,
-                  filter: "blur(20px)",
-                }}
-                whileInView={{
-                  opacity: 1,
-                  filter: "blur(0px)",
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1 + 0.5,
-                }}
-                className="text-7xl font-bold flex"
-              >
-                {letter}
-              </motion.p>
-            );
-          })}
-        </div>
-
-        <p className="text-3xl font-medium">Fullstack Developer</p>
-
-        <p className="text-base mt-10">
-          I'm a software engineer that loves to create.
-        </p>
-
-        <div className="flex flex-row gap-3 mt-10">
-          <Butten type="primary" theme="dark" link="/#contact" text="Hire me" />
-          <Butten
-            type="secondary"
-            theme="dark"
-            link="#projects"
-            text="Know more"
-          />
-        </div>
-      </div>
-      <div className="w-1/2 h-full">
-        <Image
-          src={"/bully.jpg"}
-          alt=""
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="w-full h-full object-cover"
+    <div className="w-screen h-screen bg-back flex flex-col items-center justify-center">
+      <div className="absolute top-0 left-0 w-screen h-screen opacity-100 ">
+        <video
+          src="/videos/texture2.mp4"
+          autoPlay
+          loop
+          muted
+          className="w-full h-full object-cover mix-blend-color-dodge "
         />
       </div>
+      <div className="flex items-center justify-center gap-5">
+        <p className="text-7xl transform font-oswald scale-y-[300%] scale-x-[200%] font-extrabold drop-shadow-[0_0_1px_rgba(255,255,255,1)] drop-shadow-white flex justify-center items-center">
+          N
+        </p>
+        <motion.div
+          initial={{ rotate: 0, scale: 1 }}
+          animate={{ rotate: 360}}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          whileTap={{ scale: 1.1  }}
+          className="z-10 mt-6"
+        >
+          <Image
+            src="/logo/logo-red.png"
+            alt="Lander"
+            width={200}
+            height={200}
+            className="flex justify-center items-center  z-10 cursor-pointer "
+          />
+        </motion.div>
+
+        <p className="text-7xl transform font-oswald scale-y-[300%] scale-x-[200%] font-extrabold drop-shadow-[0_0_1px_rgba(255,255,255,1)] drop-shadow-white flex justify-center items-center">
+          R
+        </p>
+      </div>
+
+      {/* <p className="text-2xl font-extrabold uppercase">Fullstack Developer</p> */}
     </div>
   );
 }

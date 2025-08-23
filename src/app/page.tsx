@@ -5,12 +5,15 @@ import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import Loader from "@/components/Loader";
 import Navbar from "@/components/Navbar";
+import Player from "@/components/Player";
 
 export default function Page() {
   return (
     <>
       <Loader />
       <Lander />
+
+      <Player />
 
       <Navbar />
 

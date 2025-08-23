@@ -64,7 +64,7 @@ export default function Loader() {
     };
 
     // Check if page is already loaded
-    if (document.readyState === 'complete') {
+    if (document.readyState === "complete") {
       handleLoad();
     } else {
       // Wait for everything to load
@@ -75,6 +75,18 @@ export default function Loader() {
       window.removeEventListener("load", handleLoad);
     };
   }, []);
+
+  useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isLoading]);
 
   return (
     <>
