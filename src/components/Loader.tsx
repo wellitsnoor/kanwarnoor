@@ -100,7 +100,7 @@ export default function Loader() {
             className="absolute bg-front w-screen h-screen flex justify-center items-center z-50"
           >
             <div className="flex items-center justify-center gap-150">
-              <p className="text-4xl transform scale-x-[300%] font-extrabold opacity-70 font-bebas tracking-wider animate-pulse">
+              <p className="text-4xl transform scale-x-[300%] font-bold opacity-70 font-bebas tracking-wider animate-pulse">
                 KANWAR
               </p>
 
@@ -108,7 +108,10 @@ export default function Loader() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: punjabi }}
                 transition={{ duration: 0.2 }}
-                className="absolute text-7xl transform scale-y-[400%]  font-extrabold drop-shadow-[0_0_1px_rgba(255,255,255,1)] drop-shadow-white mb-10"
+                className="absolute text-7xl transform scale-y-[400%] drop-shadow-[0_0_1px_rgba(255,255,255,1)] drop-shadow-white mb-10 
+                [@supports(-moz-appearance:none)]:font-extrabold
+                [@supports(not(-moz-appearance:none))]:font-bold
+              "
               >
                 ਨੂਰ
               </motion.p>
@@ -117,7 +120,7 @@ export default function Loader() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: english }}
                 transition={{ duration: 0.2 }}
-                className="absolute text-7xl transform font-oswald scale-y-[400%] font-extrabold drop-shadow-[0_0_1px_rgba(255,255,255,1)] drop-shadow-white mb-10"
+                className="absolute text-7xl transform font-oswald scale-y-[400%] font-bold drop-shadow-[0_0_1px_rgba(255,255,255,1)] drop-shadow-white mb-10"
               >
                 NOOR
               </motion.p>
