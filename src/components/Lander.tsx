@@ -16,19 +16,21 @@ export default function Lander() {
   }
 
   return (
-    <div className="w-screen h-screen bg-back flex flex-col items-center justify-center">
+    <div className="w-screen h-screen bg-back flex flex-col items-center justify-center overflow-hidden">
       <div className="absolute top-0 left-0 w-screen h-screen opacity-100 ">
         {isClient && (
-          <video
-            src="/videos/texture2.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            suppressHydrationWarning
-            crossOrigin="anonymous"
-            className="w-full h-full object-cover mix-blend-color-dodge "
-          />
+          <>
+            <video
+              src="/videos/texture2.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              suppressHydrationWarning
+              crossOrigin="anonymous"
+              className="w-full h-full object-cover mix-blend-hard-light britness-200 contrast-200 hue-rotate-180 overflow-hidden"
+            />
+          </>
         )}
       </div>
       <div className="flex items-center justify-center gap-5">

@@ -10,45 +10,44 @@ import Player from "@/components/Player";
 export default function Page() {
   return (
     <>
-      <Loader />
+
       <Lander />
 
-      <Player />
+      {/* <Player /> */}
 
-      <Navbar />
 
-      <section
+      {/* <section
         id="projects"
         className="w-full h-screen bg-black flex flex-row items-center justify-center"
       >
         <Projects />
-      </section>
+      </section> */}
 
-      <section
+      {/* <section
         id="skills"
         className="w-full h-screen bg-black flex flex-row items-center justify-center overflow-hidden"
       >
         <Skills />
-      </section>
+      </section> */}
 
-      <div className="w-full h-screen bg-black flex flex-row items-center justify-center">
+      {/* <div className="w-full h-screen bg-black flex flex-row items-center justify-center">
         <div className="w-full h-full flex flex-col justify-center items-center ">
           <p>Blog</p>
         </div>
-      </div>
+      </div> */}
 
-      <section
+      {/* <section
         id="contact"
         className="w-full h-screen bg-white text-black flex flex-row items-center justify-center overflow-hidden"
       >
         <Contact />
-      </section>
+      </section> */}
 
-      <div className="w-full h-screen bg-black text-white flex flex-row items-center justify-center">
+      {/* <div className="w-screen h-screen bg-red-200 text-white flex flex-row items-center justify-center">
         <div className="w-full h-full flex flex-col justify-center items-center ">
           <p>Footer</p>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
