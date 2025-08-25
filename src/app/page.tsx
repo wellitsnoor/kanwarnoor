@@ -1,20 +1,17 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Lander from "@/components/Lander";
-import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
-import Contact from "@/components/Contact";
-import Loader from "@/components/Loader";
-import Navbar from "@/components/Navbar";
-import Player from "@/components/Player";
 
 export default function Page() {
+
   return (
     <>
-
       <Lander />
 
-      {/* <Player /> */}
 
+
+      {/* <Player /> */}
 
       {/* <section
         id="projects"

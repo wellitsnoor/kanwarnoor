@@ -97,10 +97,10 @@ export default function Loader() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1, ease: "easeInOut" }}
-            className="absolute bg-front w-screen h-screen flex justify-center items-center z-50"
+            className="absolute bg-front w-screen h-screen flex justify-center items-center z-[100]"
           >
             <div className="flex items-center justify-center gap-150">
-              <p className="text-4xl transform scale-x-[300%] font-bold opacity-70 font-bebas tracking-wider animate-pulse">
+              <p className="text-4xl transform scale-x-[300%] font-bold opacity-70 font-bebas tracking-wider animate-pulse hidden md:flex">
                 KANWAR
               </p>
 
@@ -125,7 +125,7 @@ export default function Loader() {
                 NOOR
               </motion.p>
 
-              <p className="text-4xl transform scale-x-[300%] font-extrabold opacity-70 font-bebas tracking-wider animate-pulse">
+              <p className="text-4xl transform scale-x-[300%] font-extrabold opacity-70 font-bebas tracking-wider animate-pulse hidden md:flex">
                 KANWAR
               </p>
             </div>

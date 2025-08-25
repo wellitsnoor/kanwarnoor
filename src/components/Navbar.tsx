@@ -45,7 +45,7 @@ export default function Navbar() {
       </div>
 
       <div className="absolute fixed bottom-0 left-0 right-0 bg-gradient-to-t z-40">
-        <ul className="flex flex-row text-2xl gap-10 font-medium m-5 justify-center">
+        <ul className="flex-row text-2xl md:flex hidden gap-10 font-medium m-5 justify-center">
           {links.map((link) => (
             <li
               key={link.name}

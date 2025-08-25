@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Loader from "@/components/Loader";
 import Navbar from "@/components/Navbar";
 import Transition from "@/components/Transition";
 import { RouteProvider } from "@/context/routeContext";
-import Player from "@/components/Player";
+// import Player from "@/components/Player";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,6 +18,12 @@ export const metadata: Metadata = {
   description: "Personal website of Kanwarnoor",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,13 +31,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} bg-black text-white antialiased`}>
+      <body className={`${inter.variable}  text-white antialiased bg-black`}>
         <RouteProvider>
           {/* <Navbar /> */}
+          <Loader />
           <Transition />
           <Navbar />
           {/* <Player/> */}
-          <Loader />
+
           {children}
         </RouteProvider>
       </body>
