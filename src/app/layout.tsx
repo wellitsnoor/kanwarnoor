@@ -5,6 +5,7 @@ import Loader from "@/components/Loader";
 import Navbar from "@/components/Navbar";
 import Transition from "@/components/Transition";
 import { RouteProvider } from "@/context/routeContext";
+import { Analytics } from "@vercel/analytics/next"
 // import Player from "@/components/Player";
 
 const inter = Inter({
@@ -34,6 +35,7 @@ export default function RootLayout({
       <body className={`${inter.variable}  text-white antialiased bg-black`}>
         <RouteProvider>
           {/* <Navbar /> */}
+          <Analytics />
           <Loader />
           <Transition />
           <Navbar />
