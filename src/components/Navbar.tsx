@@ -14,22 +14,27 @@ export default function Navbar() {
     {
       name: "Home",
       href: "/",
+      timeout: 0,
     },
     {
       name: "Projects",
       href: "/projects",
+      timeout: 500,
     },
     {
       name: "Skills",
       href: "/skills",
+      timeout: 500,
     },
     {
       name: "Contact",
       href: "/contact",
+      timeout: 500,
     },
     {
       name: "Blog",
       href: "/blog",
+      timeout: 500,
     },
   ];
 
@@ -56,7 +61,7 @@ export default function Navbar() {
                 setRoute(link.href);
                 const timeout = setTimeout(() => {
                   router.push(link.href);
-                }, 500);
+                }, link.timeout);
                 return () => clearTimeout(timeout);
               }}
             >

@@ -4,16 +4,21 @@ import React, { useState, useEffect, useContext } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { RouteContext } from "@/context/routeContext";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export default function Transition() {
   const pathname = usePathname();
-  const { route, setRoute } = useContext(RouteContext);
-  const router = useRouter();
+  const { route } = useContext(RouteContext);
 
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     console.log(route);
+
+    if (route == "") {
+      setAnimate(false);
+      return;
+    }
 
     setAnimate(true);
 
@@ -28,17 +33,64 @@ export default function Transition() {
 
   return (
     <>
-      <AnimatePresence>
-        {animate && (
+      {route !== "/" && (
+        <AnimatePresence>
+          {animate && (
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: route !== pathname ? "0%" : "-100%" }}
+              transition={{ duration: 0.5 }}
+              exit={{ x: "-100%" }}
+              className="w-screen h-screen absolute top-0 left-0 bg-front z-50 text-white text-center flex items-center justify-center"
+            ></motion.div>
+          )}
+        </AnimatePresence>
+      )}
+
+      {route === "/" && (
+        <AnimatePresence>
           <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: route !== pathname ? "0%" : "-100%" }}
-            transition={{ duration: 0.5 }}
-            exit={{ x: "-100%" }}
-            className="w-screen h-screen absolute top-0 left-0 bg-front z-50 text-white text-center flex items-center justify-center"
-          ></motion.div>
-        )}
-      </AnimatePresence>
+            initial={{ scale: 10, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            exit={{
+              scale: 1,
+              opacity: 0,
+              transition: { duration: 0.1, ease: "easeInOut" },
+            }}
+            className="w-fit h-fit absolute top-0 left-0 right-0 bottom-0 m-auto z-50 text-white text-center flex items-center justify-center"
+          >
+            <motion.div
+              initial={{ rotate: 0, scale: 1 }}
+              animate={{
+                rotate: 360,
+                transition: {
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+              }}
+              whileHover={{
+                scale: 1.1,
+                transition: { duration: 0.2, ease: "easeOut" },
+              }}
+              whileTap={{
+                scale: 1.2,
+                transition: { duration: 0.2, ease: "easeOut" },
+              }}
+              className="z-10 mt-6"
+            >
+              <Image
+                src="/logo/logo-red.png"
+                alt="Lander"
+                width={200}
+                height={200}
+                className="flex justify-center items-center  z-10 cursor-pointer "
+              />
+            </motion.div>
+          </motion.div>
+        </AnimatePresence>
+      )}
 
       {/* <div className="w-screen h-screen absolute top-0 left-0 bg-front z-50 text-white text-center flex items-center justify-center">
         <p className="text-2xl font-bold">{route || pathname}</p>

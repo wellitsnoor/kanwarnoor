@@ -1,11 +1,15 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Button from "./Button";
+import { RouteContext } from "@/context/routeContext";
 
 export default function Lander() {
   const [isClient, setIsClient] = useState(false);
+  const { route } = useContext(RouteContext);
+
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -33,43 +37,80 @@ export default function Lander() {
                 suppressHydrationWarning
                 crossOrigin="anonymous"
                 className="w-full h-full object-cover mix-blend-hard-light britness-200 contrast-200 hue-rotate-180 overflow-hidden"
+                onLoadStart={() => setVideoLoaded(false)}
+                onCanPlay={() => setVideoLoaded(true)}
               />
+              {!videoLoaded && (
+                <div className="absolute inset-0 bg-back w-full h-full flex items-center justify-center">
+                  <Image
+                    src="/videos/placeholder.jpg"
+                    alt="Lander"
+                    width={0}
+                    loading="lazy"
+                    placeholder="blur"
+                    height={0}
+                    sizes="100% 100%"
+                    className="flex justify-center items-center cursor-pointer w-full h-full object-cover  mix-blend-hard-light britness-200 contrast-200 hue-rotate-180 overflow-hidden"
+                  />
+                </div>
+              )}
             </>
           )}
         </div>
-        <div className="flex items-center justify-center gap-5">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className={`flex items-center justify-center ${
+            route === "/" ? "gap-[15rem]" : "gap-5"
+          }`}
+        >
           <p className="text-7xl transform font-oswald scale-y-[300%] scale-x-[200%] font-extrabold drop-shadow-[0_0_1px_rgba(255,255,255,1)] drop-shadow-white flex justify-center items-center">
             N
           </p>
-          <motion.div
-            initial={{ rotate: 0, scale: 1 }}
-            animate={{
-              rotate: 360,
-              transition: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-            }}
-            whileHover={{
-              scale: 1.1,
-              transition: { duration: 0.2, ease: "easeOut" },
-            }}
-            whileTap={{
-              scale: 1.2,
-              transition: { duration: 0.2, ease: "easeOut" },
-            }}
-            className="z-10 mt-6"
-          >
-            <Image
-              src="/logo/logo-red.png"
-              alt="Lander"
-              width={200}
-              height={200}
-              className="flex justify-center items-center  z-10 cursor-pointer "
-            />
-          </motion.div>
+          <AnimatePresence>
+            {route !== "/" && (
+              <motion.div
+                initial={{ rotate: 0, scale: 1 }}
+                animate={{
+                  rotate: 360,
+                  transition: {
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                }}
+                exit={{
+                  rotate: 0,
+                  scale: 1,
+                  transition: { duration: 0.1, ease: "easeInOut" },
+                }}
+                whileHover={{
+                  scale: 1.1,
+                  transition: { duration: 0.2, ease: "easeOut" },
+                }}
+                whileTap={{
+                  scale: 1.2,
+                  transition: { duration: 0.2, ease: "easeOut" },
+                }}
+                className="z-10 mt-6"
+              >
+                <Image
+                  src="/logo/logo-red.png"
+                  alt="Lander"
+                  width={200}
+                  height={200}
+                  className="flex justify-center items-center  z-10 cursor-pointer "
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <p className="text-7xl transform font-oswald scale-y-[300%] scale-x-[200%] font-extrabold drop-shadow-[0_0_1px_rgba(255,255,255,1)] drop-shadow-white flex justify-center items-center">
             R
           </p>
-        </div>
+        </motion.div>
 
         {/* <p className="text-2xl font-extrabold uppercase">Fullstack Developer</p> */}
       </div>
