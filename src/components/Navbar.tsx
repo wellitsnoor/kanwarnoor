@@ -52,10 +52,15 @@ export default function Navbar() {
               className={`cursor-pointer hover:underline transition-all duration-300 ${
                 link.href === pathname ? "underline" : "no-underline"
               } ${pathname === "/contact" ? "text-black" : "text-white"}`}
+              onClick={() => {
+                setRoute(link.href);
+                const timeout = setTimeout(() => {
+                  router.push(link.href);
+                }, 500);
+                return () => clearTimeout(timeout);
+              }}
             >
-              <Link href={link.href} onClick={() => setRoute(link.href)}>
-                {link.name}
-              </Link>
+              {link.name}
             </li>
           ))}
         </ul>
