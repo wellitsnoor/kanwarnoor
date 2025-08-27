@@ -47,7 +47,7 @@ export default function Lander() {
                     alt="Lander"
                     width={0}
                     loading="lazy"
-                    placeholder="blur"
+                    
                     height={0}
                     sizes="100% 100%"
                     className="flex justify-center items-center cursor-pointer w-full h-full object-cover  mix-blend-hard-light britness-200 contrast-200 hue-rotate-180 overflow-hidden"
