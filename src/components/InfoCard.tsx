@@ -82,7 +82,6 @@ export default function InfoCard({
                [mask-image:linear-gradient(to_top,black_50%,transparent)]
                [Webkit-mask-image:linear-gradient(to_top,black_50%,transparent)] rounded-b-2xl"
             />
-
           </div>
           <motion.div
             initial={{
