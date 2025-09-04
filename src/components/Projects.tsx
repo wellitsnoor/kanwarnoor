@@ -83,7 +83,7 @@ export default function Projects() {
   }, [filter]);
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center overflow-hidden">
+    <div className="w-full h-fit flex flex-col items-center justify-center overflow-hidden">
       <div className="flex flex-row">
         {Array.from("Projects").map((letter, index) => {
           return (
@@ -101,7 +101,7 @@ export default function Projects() {
                 duration: 0.5,
                 delay: index * 0.1,
               }}
-              className="text-7xl font-bold flex"
+              className="text-7xl font-bold flex font-bebas"
             >
               {letter}
             </motion.p>
@@ -163,10 +163,10 @@ export default function Projects() {
         </div>
       </div>
       <div
-        className="overflow-hidden flex flex-col mr-auto pl-10"
+        className="overflow-hidden flex flex-col mr-auto pl-10 "
         ref={emblaRef}
       >
-        <div className="flex flex-row gap-10 h-[25.5rem] w-[100vw] py-1 ">
+        <div className="flex flex-row gap-10 w-[100vw] py-1 ">
           {filteredData.length === 0 && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -192,32 +192,29 @@ export default function Projects() {
             );
           })}
         </div>
-        <div className="flex flex-row gap-3 ml-auto  text-white w-fit my-5 items-center justify-between pr-20">
-         
-            <svg
-              
-              className="size-10 bg-white rounded-full p-1 cursor-pointer"
-              viewBox="-8.5 0 32 32"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              onClick={() => emblaApi?.scrollPrev()}
-            >
-              <title>left</title>
-              <path d="M7.094 15.938l7.688 7.688-3.719 3.563-11.063-11.063 11.313-11.344 3.531 3.5z"></path>
-            </svg>
+        {/* control buttons */}
+        <div className="flex flex-row gap-3 ml-auto my-5 text-white w-fit pr-20 ">
+          <svg
+            className="size-10 bg-white rounded-full p-1 cursor-pointer"
+            viewBox="-8.5 0 32 32"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            onClick={() => emblaApi?.scrollPrev()}
+          >
+            <title>left</title>
+            <path d="M7.094 15.938l7.688 7.688-3.719 3.563-11.063-11.063 11.313-11.344 3.531 3.5z"></path>
+          </svg>
 
-            <svg
-              
-              className="size-10 bg-white rounded-full p-1 cursor-pointer rotate-180"
-              viewBox="-8.5 0 32 32"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              onClick={() => emblaApi?.scrollNext()}
-            >
-              <title>left</title>
-              <path d="M7.094 15.938l7.688 7.688-3.719 3.563-11.063-11.063 11.313-11.344 3.531 3.5z"></path>
-            </svg>
-         
+          <svg
+            className="size-10 bg-white rounded-full p-1 cursor-pointer rotate-180"
+            viewBox="-8.5 0 32 32"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            onClick={() => emblaApi?.scrollNext()}
+          >
+            <title>left</title>
+            <path d="M7.094 15.938l7.688 7.688-3.719 3.563-11.063-11.063 11.313-11.344 3.531 3.5z"></path>
+          </svg>
         </div>
       </div>
     </div>

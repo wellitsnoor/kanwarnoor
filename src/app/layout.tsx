@@ -4,7 +4,7 @@ import "./globals.css";
 import Loader from "@/components/Loader";
 import Navbar from "@/components/Navbar";
 import Transition from "@/components/Transition";
-import { RouteProvider } from "@/context/routeContext";
+import { Provider } from "@/context/provider";
 import { Analytics } from "@vercel/analytics/next";
 // import Player from "@/components/Player";
 
@@ -51,7 +51,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${bebas.variable} ${braah.variable} ${oswald.variable} text-white antialiased bg-black`}
       >
-        <RouteProvider>
+        <Provider>
           {/* <Navbar /> */}
 
           <Loader />
@@ -60,7 +60,7 @@ export default function RootLayout({
           {/* <Player/> */}
 
           {children}
-        </RouteProvider>
+        </Provider>
         <Analytics />
       </body>
     </html>

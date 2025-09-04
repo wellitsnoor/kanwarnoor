@@ -9,7 +9,7 @@ interface BlockProps {
 
 export default function Block({ name, image, link }: BlockProps) {
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center bg-white/10 backdrop-blur-sm text-white rounded-xl cursor-pointer text-center border border-white/20 hover:bg-white/20 transition-all duration-300">
+    <div className="w-full h-full flex flex-col justify-center items-center bg-black/50 backdrop-blur-sm text-white rounded-xl cursor-pointer text-center border border-white/20 hover:bg-white/20 transition-all duration-300">
       {image ? (
         <div className="w-full h-full flex flex-col justify-center items-center rounded-xl overflow-hidden">
           <Image
@@ -23,7 +23,7 @@ export default function Block({ name, image, link }: BlockProps) {
         </div>
       ) : (
         <div className=" flex flex-col rounded-xl p-5">
-          <p className="text-center text-sm font-medium">{name}</p>
+          <p className="text-center text-2xl font-medium ">{name}</p>
         </div>
       )}
     </div>

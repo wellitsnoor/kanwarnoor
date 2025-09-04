@@ -1,13 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { LoadingContext } from "@/context/loadingContext";
 
 export default function Loader() {
+
   const [punjabi, setPunjabi] = useState(0);
   const [english, setEnglish] = useState(0);
 
-  const [isLoading, setIsLoading] = useState(true);
+
+  const { loading, setLoading } = useContext(LoadingContext);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -50,7 +53,7 @@ export default function Loader() {
 
   useEffect(() => {
     setTimeout(() => {
-      setIsLoading(false);
+      setLoading(false);
     }, 3000);
   }, []);
 
@@ -59,7 +62,7 @@ export default function Loader() {
     const handleLoad = () => {
       // Add a small delay to ensure smooth transition
       setTimeout(() => {
-        setIsLoading(false);
+        setLoading(false);
       }, 1000);
     };
 
@@ -77,7 +80,7 @@ export default function Loader() {
   }, []);
 
   useEffect(() => {
-    if (isLoading) {
+    if (loading) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
@@ -86,12 +89,12 @@ export default function Loader() {
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [isLoading]);
+  }, [loading]);
 
   return (
     <>
       <AnimatePresence>
-        {isLoading && (
+        {loading && (
           <motion.div
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}

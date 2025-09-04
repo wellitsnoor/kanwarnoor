@@ -42,7 +42,9 @@ export default function Transition() {
               transition={{ duration: 0.5 }}
               exit={{ x: "-100%" }}
               className="w-screen h-screen absolute top-0 left-0 bg-front z-50 text-white text-center flex items-center justify-center"
-            ></motion.div>
+            >
+              {/* <p className="text-2xl font-bold capitalize">{route.split("/")[1]}</p> */}
+            </motion.div>
           )}
         </AnimatePresence>
       )}
