@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Bebas_Neue, Braah_One, Inter, Oswald } from "next/font/google";
 import "./globals.css";
 import Loader from "@/components/Loader";
 import Navbar from "@/components/Navbar";
@@ -12,6 +12,22 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600", "700"],
   variable: "--font-inter",
+});
+
+const bebas = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-bebas",
+});
+const braah = Braah_One({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-braah",
+});
+const oswald = Oswald({
+  weight: ["200", "400", "700"],
+  subsets: ["latin"],
+  variable: "--font-oswald",
 });
 
 export const metadata: Metadata = {
@@ -32,7 +48,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable}  text-white antialiased bg-black`}>
+      <body
+        className={`${inter.variable} ${bebas.variable} ${braah.variable} ${oswald.variable} text-white antialiased bg-black`}
+      >
         <RouteProvider>
           {/* <Navbar /> */}
 
