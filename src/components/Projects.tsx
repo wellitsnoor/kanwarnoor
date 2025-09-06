@@ -46,7 +46,7 @@ export default function Projects() {
       image: "/images/projects/gndu.png",
       animation: "center",
       link: "https://university-verka.vercel.app/",
-      tags: ["all", "client"],
+      tags: ["all", "client", "collaboration"],
     },
     {
       title: "Fullscreen",
