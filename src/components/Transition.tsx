@@ -24,7 +24,7 @@ export default function Transition() {
 
     const timeout = setTimeout(() => {
       setAnimate(false);
-    }, 2000);
+    }, 1500);
 
     return () => {
       clearTimeout(timeout);
