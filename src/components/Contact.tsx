@@ -128,7 +128,7 @@ export default function Contact() {
                       duration: 0.5,
                       delay: index * 0.1,
                     }}
-                    className="text-7xl font-bold flex"
+                    className="text-7xl font-bold flex font-bebas"
                   >
                     {letter === " " ? "\u00A0" : letter}
                   </motion.p>

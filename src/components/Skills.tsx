@@ -79,153 +79,68 @@ export default function Skills() {
 
   return (
     <div className=" w-full h-full flex flex-row-reverse  items-center justify-center">
+      {/* <div className="flex flex-col items-center justify-center">
+        <div className="w-fit h-fit mr-auto pr-4 flex flex-row gap-2 justify-center items-center">
+          {Array.from({ length: 5 }).map((_, index) => {
+            return (
+              <motion.p
+                key={index}
+                initial={{
+                  opacity: 0,
+                  filter: "blur(20px)",
+                }}
+                whileInView={{
+                  opacity: 1,
+                  filter: "blur(0px)",
+                }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                }}
+                className="text-[10rem] font-bold font-bebas flex leading-[8rem] hover:text-white/80 transition-all text-red-700 duration-100 cursor-pointer"
+              >
+                Skills
+              </motion.p>
+            );
+          })}
+        </div>
+      </div> */}
       <div className="flex flex-col items-center justify-center">
-        <div className="w-fit h-fit mr-auto pr-4 flex flex-row gap-2 justify-center items-center">
-          {Array.from({ length: 5 }).map((_, index) => {
-            return (
-              <motion.p
-                key={index}
-                initial={{
-                  opacity: 0,
-                  filter: "blur(20px)",
-                }}
-                whileInView={{
-                  opacity: 1,
-                  filter: "blur(0px)",
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                }}
-                className="text-[10rem] font-bold font-bebas flex leading-[8rem] hover:text-white/80 transition-all text-red-700 duration-100 cursor-pointer"
-              >
-                Skills
-              </motion.p>
-            );
-          })}
-        </div>
-        <div className="w-fit h-fit mr-auto pr-4 flex flex-row gap-2 justify-center items-center">
-          {Array.from({ length: 5 }).map((_, index) => {
-            return (
-              <motion.p
-                key={index}
-                initial={{
-                  opacity: 0,
-                  filter: "blur(20px)",
-                }}
-                whileInView={{
-                  opacity: 1,
-                  filter: "blur(0px)",
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                }}
-                className="text-[10rem] font-bold font-bebas flex leading-[8rem] hover:text-white/80 transition-all text-red-700 duration-100 cursor-pointer"
-              >
-                Skills
-              </motion.p>
-            );
-          })}
-        </div>
-        <div className="w-fit h-fit mr-auto pr-4 flex flex-row gap-2 justify-center items-center">
-          {Array.from({ length: 5 }).map((_, index) => {
-            return (
-              <motion.p
-                key={index}
-                initial={{
-                  opacity: 0,
-                  filter: "blur(20px)",
-                }}
-                whileInView={{
-                  opacity: 1,
-                  filter: "blur(0px)",
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                }}
-                className="text-[10rem] font-bold font-bebas flex leading-[8rem] hover:text-white/80 transition-all text-red-700 duration-100 cursor-pointer"
-              >
-                Skills
-              </motion.p>
-            );
-          })}
-        </div>
-        <div className="w-fit h-fit mr-auto pr-4 flex flex-row gap-2 justify-center items-center">
-          {Array.from({ length: 5 }).map((_, index) => {
-            return (
-              <motion.p
-                key={index}
-                initial={{
-                  opacity: 0,
-                  filter: "blur(20px)",
-                }}
-                whileInView={{
-                  opacity: 1,
-                  filter: "blur(0px)",
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                }}
-                className={`text-[10rem] font-bold font-bebas flex leading-[8rem] hover:text-white/80 transition-all duration-100 cursor-pointer ${
-                  index === 3 ? "text-white" : "text-red-700"
-                }`}
-              >
-                Skills
-              </motion.p>
-            );
-          })}
-        </div>
-        <div className="w-fit h-fit mr-auto flex flex-row gap-2 justify-center items-center">
-          {Array.from({ length: 5 }).map((_, index) => {
-            return (
-              <motion.p
-                key={index}
-                initial={{
-                  opacity: 0,
-                  filter: "blur(20px)",
-                }}
-                whileInView={{
-                  opacity: 1,
-                  filter: "blur(0px)",
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                }}
-                className={`text-[10rem] font-bold font-bebas flex leading-[8rem] hover:text-white/80 text-red-700 transition-all duration-100 cursor-pointer `}
-              >
-                Skills
-              </motion.p>
-            );
-          })}
-        </div>
-        <div className="w-fit h-fit mr-auto pr-4 flex flex-row gap-2 justify-center items-center">
-          {Array.from({ length: 5 }).map((_, index) => {
-            return (
-              <motion.p
-                key={index}
-                initial={{
-                  opacity: 0,
-                  filter: "blur(20px)",
-                }}
-                whileInView={{
-                  opacity: 1,
-                  filter: "blur(0px)",
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                }}
-                className="text-[10rem] font-bold font-bebas flex leading-[8rem] hover:text-white/80 transition-all text-red-700 duration-100 cursor-pointer"
-              >
-                Skills
-              </motion.p>
-            );
-          })}
-        </div>
+        {!loading && Array.from({ length: 10 }).map((_, realIndex) => {
+          return (
+            <div
+              className="w-fit h-fit mr-auto pr-4 flex flex-row gap-2 justify-center items-center"
+              key={realIndex}
+            >
+              {Array.from({ length: 10 }).map((_, index) => {
+                return (
+                  <motion.p
+                    key={index}
+                    initial={{
+                      opacity: 0,
+                      filter: "blur(20px)",
+                    }}
+                    animate={{
+                      opacity: 1,
+                      filter: "blur(0px)",
+                    }}
+                    transition={{
+                      duration: 0.5,
+                      delay: index * 0.1,
+                    }}
+                    className={`text-[10rem] font-bold font-bebas flex leading-[8rem] hover:text-white/80 transition-all text-red-700 duration-100 cursor-pointer ${
+                      realIndex === 5 && index === 6
+                        ? "text-white"
+                        : "text-red-700"
+                    }`}
+                  >
+                    Skills
+                  </motion.p>
+                );
+              })}
+            </div>
+          );
+        })}
       </div>
 
       {!loading && (
