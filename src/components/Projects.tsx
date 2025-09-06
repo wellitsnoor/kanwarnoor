@@ -32,6 +32,13 @@ export default function Projects() {
       tags: ["all", "client"],
     },
     {
+      title: "Rhetor",
+      des: "Content and creator agency that pairs thoughtful strategy with high-impact execution.",
+      image: "/images/projects/rhetor.png",
+      animation: "center",
+      tags: ["all", "client"],
+    },
+    {
       title: "Guru Nanak Dev University",
       des: "Bringing all colleges under one website",
       image: "/images/projects/gndu.png",
