@@ -101,6 +101,8 @@ export default function Skills() {
 
   const { loading } = useContext(LoadingContext);
 
+  const [selected, setSelected] = useState<number | null>(null);
+
   return (
     <div className=" w-full h-full flex flex-row-reverse  items-center justify-center">
       {/* <div className="flex flex-col items-center justify-center">
@@ -184,33 +186,42 @@ export default function Skills() {
             className="bg-back w-[80%] rounded-r-full h-[150%] left-0 rounded-xl absolute blur-3xl -translate-x-[15%]"
           ></motion.div>
 
-          <div className="absolute flex flex-col items-center justify-center w-fit h-fit mr-auto left-0 ml-10 ">
-            <div className="w-fit h-fit grid grid-cols-3">
+          <div className="absolute flex flex-col ml-10 left-0 ">
+            <div className="w-fit h-fit grid grid-cols-3  justify-center items-center gap-5">
               {skills.map((skill, index) => {
                 return (
-                  <motion.div
-                    initial={{
-                      opacity: 0,
-                    }}
-                    animate={{
-                      opacity: 1,
-                    }}
-                    transition={{
-                      duration: 2,
-                      delay: index * 0.1 +1,
-                    }}
-                    key={index}
-                    onMouseEnter={() => setText(skill.shorty)}
-                    onMouseLeave={() => setText("Skills")}
-                    className="w-fit"
-                  >
-                    <Block
-                      name={skill.name}
-                      image={skill.image}
-                      description={skill.description}
-                      link={skill.link}
-                    />
-                  </motion.div>
+                  (selected === index || selected === null) && (
+                    <>
+                      <motion.div
+                        initial={{
+                          opacity: 0,
+                        }}
+                        animate={{
+                          opacity: 1,
+                        }}
+                        transition={{
+                          duration: 2,
+                          delay: !loading ? index * 0.1 : index * 0.1 + 1,
+                        }}
+                        key={index}
+                        onMouseEnter={() => setText(skill.shorty)}
+                        onMouseLeave={() => setText("Skills")}
+                        className="w-fit"
+                        onClick={() =>
+                          setSelected((prev) => (prev === index ? null : index))
+                        }
+                      >
+                        <Block
+                          name={skill.name}
+                          image={skill.image}
+                          description={skill.description}
+                        />
+                      </motion.div>
+                      {selected === index && (
+                        <p className=" t ">{skill.description}</p>
+                      )}
+                    </>
+                  )
                 );
               })}
             </div>
