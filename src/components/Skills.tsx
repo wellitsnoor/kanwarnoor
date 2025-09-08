@@ -11,81 +11,89 @@ export default function Skills() {
     {
       name: "React",
       shorty: "react",
-      // image: "/skills/react.png",
-      size: "large",
+      link: "https://react.dev/",
+      image: "/images/skills/react.png",
+      description: "JavaScript library for building user interfaces",
     },
     {
       name: "Next.js",
       shorty: "next",
-      // image: "/skills/next.jpg",
-      size: "large",
+      description: "React framework for building server-side apps",
+      image: "/images/skills/next.png",
+      link: "https://nextjs.org/",
     },
     {
       name: "Tailwind CSS",
       shorty: "tailwind",
-
-      image: "/skills/tailwind.jpg",
-      size: "medium",
+      description:
+        "Utility-first CSS framework for building responsive user interfaces",
+      image: "/images/skills/tailwind.png",
+      link: "https://tailwindcss.com/",
     },
     {
       name: "TypeScript",
+      description:
+        " Strongly typed programming language that builds on JavaScript",
       shorty: "TypeScript",
-      image: "/skills/typescript.jpg",
-      size: "small",
+      image: "/images/skills/ts.webp",
+      link: "https://www.typescriptlang.org/",
     },
     {
       name: "JavaScript",
       shorty: "JavaScript",
-      image: "/skills/javascript.jpg",
-      size: "small",
+      image: "/images/skills/js.png",
+      description: "100%",
+      link: "https://en.wikipedia.org/wiki/JavaScript",
     },
     {
-      name: "Git",
+      name: "Git/Github",
       shorty: "GITHUB",
-      image: "/skills/git.jpg",
-      size: "small",
+      image: "/images/skills/git.png",
+      description: "Version control system for tracking changes in code",
+      link: "https://github.com/",
     },
     {
       name: "AWS",
       shorty: "aws",
-      // image: "/skills/aws.jpg",
-      size: "large",
+      image: "/images/skills/aws.png",
+      link: "https://aws.amazon.com/",
     },
     {
       name: "Python",
       shorty: "python",
-      image: "",
-      size: "medium",
+      image: "/images/skills/python.png",
+      link: "https://www.python.org/",
     },
     {
       name: "Java",
       shorty: "java",
-      image: "/skills/java.jpg",
-      size: "small",
+      image: "/images/skills/java.png",
+      link: "https://www.java.com/",
     },
     {
       name: "C/C++",
       shorty: "CPP",
-      image: "/skills/cpp.jpg",
-      size: "small",
+      image: "/images/skills/c++.png",
+      link: "https://en.wikipedia.org/wiki/C%2B%2B",
     },
+
     {
       name: "MongoDB",
       shorty: "mongodb",
-      image: "/skills/mongodb.jpg",
-      size: "small",
+      image: "/images/skills/mongo.png",
+      link: "https://www.mongodb.com/",
     },
     {
       name: "Framer Motion",
       shorty: "framer",
-      image: "/skills/framer.jpg",
-      size: "medium",
+      image: "/images/skills/framer.png",
+      link: "https://motion.dev/",
     },
     {
       name: "GSAP",
       shorty: "gsap",
-      image: "/skills/gsap.jpg",
-      size: "small",
+      image: "/images/skills/gsap.png",
+      link: "https://gsap.com/",
     },
   ];
 
@@ -173,38 +181,40 @@ export default function Skills() {
               duration: 1,
               delay: 0.3,
             }}
-            className="bg-back w-[65%] rounded-r-full h-[150%] left-0 rounded-xl absolute blur-3xl -translate-x-[15%]"
+            className="bg-back w-[80%] rounded-r-full h-[150%] left-0 rounded-xl absolute blur-3xl -translate-x-[15%]"
           ></motion.div>
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: "-10%",
-            }}
-            animate={{
-              opacity: 1,
-              x: "0%",
-            }}
-            transition={{
-              duration: 0.5,
-              delay: 1,
-            }}
-            className="absolute flex flex-col items-center justify-center w-fit h-fit mr-auto left-0 ml-10 "
-          >
-            <div className="w-fit h-fit  grid gap-3 items-center justify-center grid-cols-3 grid-rows-3">
+          <div className="absolute flex flex-col items-center justify-center w-fit h-fit mr-auto left-0 ml-10 ">
+            <div className="w-fit h-fit grid grid-cols-3">
               {skills.map((skill, index) => {
                 return (
-                  <div
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                    }}
+                    animate={{
+                      opacity: 1,
+                    }}
+                    transition={{
+                      duration: 2,
+                      delay: index * 0.1 +1,
+                    }}
                     key={index}
                     onMouseEnter={() => setText(skill.shorty)}
                     onMouseLeave={() => setText("Skills")}
+                    className="w-fit"
                   >
-                    <Block name={skill.name} />
-                  </div>
+                    <Block
+                      name={skill.name}
+                      image={skill.image}
+                      description={skill.description}
+                      link={skill.link}
+                    />
+                  </motion.div>
                 );
               })}
             </div>
-          </motion.div>
+          </div>
         </>
       )}
     </div>
