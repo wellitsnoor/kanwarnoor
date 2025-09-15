@@ -61,52 +61,54 @@ export default function Contact() {
     // simple contact form
     <>
       <div className="flex w-full h-full flex-row items-center justify-center relative">
-        {form.success ? (
+        {form.success || true ? (
           <>
-            <div className="flex flex-row relative">
-              {Array.from(`Success!`).map((letter, index) => {
-                return (
-                  <motion.p
-                    key={index}
-                    initial={{
-                      opacity: 0,
-                      filter: "blur(20px)",
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      filter: "blur(0px)",
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      delay: index * 0.1,
-                    }}
-                    className="text-7xl font-bold flex"
-                  >
-                    {letter === " " ? "\u00A0" : letter}
-                  </motion.p>
-                );
-              })}
-            </div>
-            <p className="text-xl w-1/2 mt-3 text-center">
-              Your message has been sent successfully. I'll get back to you as
-              soon as possible.
-            </p>
+            <div className="w-screen h-screen flex justify-center items-center flex-col">
+              <div className="flex flex-row relative">
+                {Array.from(`Success!`).map((letter, index) => {
+                  return (
+                    <motion.p
+                      key={index}
+                      initial={{
+                        opacity: 0,
+                        filter: "blur(20px)",
+                      }}
+                      whileInView={{
+                        opacity: 1,
+                        filter: "blur(0px)",
+                      }}
+                      transition={{
+                        duration: 0.5,
+                        delay: index * 0.1,
+                      }}
+                      className="text-7xl font-bold flex"
+                    >
+                      {letter === " " ? "\u00A0" : letter}
+                    </motion.p>
+                  );
+                })}
+              </div>
+              <p className="text-xl w-1/2 mt-3 text-center">
+                Your message has been sent successfully. I'll get back to you as
+                soon as possible.
+              </p>
 
-            <div className="  absolute bottom-0 mb-10 flex flex-col items-center justify-center">
-              <p className="text-2xl font-bold">Other ways to connect :-</p>
-              <div className="flex flex-row gap-5">
-                <a
-                  href="https://www.linkedin.com/in/wellitsnoor/"
-                  target="_blank"
-                >
-                  Linkedin
-                </a>
-                <a href="https://instagram.com/wellitsnoor" target="_blank">
-                  Instagram
-                </a>
-                <a href="mailto:wellitsnoor@gmail.com" target="_blank">
-                  wellitsnoor@gmail.com
-                </a>
+              <div className=" hidden absolute bottom-0 mb-10 flex flex-col items-center justify-center">
+                <p className="text-2xl font-bold">Other ways to connect :-</p>
+                <div className="flex flex-row gap-5">
+                  <a
+                    href="https://www.linkedin.com/in/wellitsnoor/"
+                    target="_blank"
+                  >
+                    Linkedin
+                  </a>
+                  <a href="https://instagram.com/wellitsnoor" target="_blank">
+                    Instagram
+                  </a>
+                  <a href="mailto:wellitsnoor@gmail.com" target="_blank">
+                    wellitsnoor@gmail.com
+                  </a>
+                </div>
               </div>
             </div>
           </>
@@ -115,7 +117,6 @@ export default function Contact() {
             <div className="w-1/2 bg-front relative h-screen flex justify-center items-center">
               <AnimatePresence>
                 <motion.div
-                 
                   transition={{ duration: 0.5, ease: "easeInOut" }}
                   exit={{
                     scale: 1,
