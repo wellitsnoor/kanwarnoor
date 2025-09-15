@@ -43,11 +43,10 @@ export default function Lander() {
               {!videoLoaded && (
                 <div className="absolute inset-0 bg-back w-full h-full flex items-center justify-center">
                   <Image
-                    src="/videos/placeholder.jpg"
+                    src="/videos/placeholder.webp"
                     alt="Lander"
                     width={0}
-                    loading="lazy"
-                    
+                    priority
                     height={0}
                     sizes="100% 100%"
                     className="flex justify-center items-center cursor-pointer w-full h-full object-cover  mix-blend-hard-light britness-200 contrast-200 hue-rotate-180 overflow-hidden"

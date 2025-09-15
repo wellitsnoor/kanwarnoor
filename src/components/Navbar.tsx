@@ -55,7 +55,7 @@ export default function Navbar() {
           return () => clearTimeout(timeout);
         }}
       >
-        <Image src="/logo/logo-white.png" alt="logo" width={35} height={35} />
+        <Image src="/logo/logo-white.webp" alt="logo" width={35} height={35} />
       </div>
 
       {!loading && (

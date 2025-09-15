@@ -83,10 +83,11 @@ export default function Transition() {
               className="z-10 mt-6"
             >
               <Image
-                src="/logo/logo-red.png"
+                src="/logo/logo-red.webp"
                 alt="Lander"
                 width={200}
                 height={200}
+                priority
                 className="flex justify-center items-center  z-10 cursor-pointer "
               />
             </motion.div>

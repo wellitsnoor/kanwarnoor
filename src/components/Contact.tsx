@@ -146,10 +146,11 @@ export default function Contact() {
                     className="z-10 mt-6"
                   >
                     <Image
-                      src="/logo/logo-red.png"
+                      src="/logo/logo-red.webp"
                       alt="Lander"
                       width={300}
                       height={300}
+                      loading="lazy"
                       className="flex justify-center items-center  z-10 cursor-pointer "
                     />
                   </motion.div>

@@ -19,7 +19,7 @@ export default function Projects() {
     {
       title: "Remaster",
       des: "A platform for artists to store and sell their music",
-      image: "/images/projects/remaster.png",
+      image: "/images/projects/remaster.webp",
       animation: "center",
       link: "https://remaster.in/",
       tags: ["all", "personal"],
@@ -27,7 +27,7 @@ export default function Projects() {
     {
       title: "Ardent Co.",
       des: "Dynamic communications, research, and public policy advisory firm",
-      image: "/images/projects/ardent.png",
+      image: "/images/projects/ardent.webp",
       link: "https://ardentco.in/",
       animation: "center",
       tags: ["all", "client"],
@@ -35,7 +35,7 @@ export default function Projects() {
     {
       title: "Rhetor",
       des: "Content and creator agency that pairs thoughtful strategy with high-impact execution.",
-      image: "/images/projects/rhetor.png",
+      image: "/images/projects/rhetor.webp",
       link: "https://rhetor.in/",
       animation: "center",
       tags: ["all", "client"],
@@ -43,7 +43,7 @@ export default function Projects() {
     {
       title: "Guru Nanak Dev University",
       des: "Bringing all colleges under one website",
-      image: "/images/projects/gndu.png",
+      image: "/images/projects/gndu.webp",
       animation: "center",
       link: "https://university-verka.vercel.app/",
       tags: ["all", "client", "collaboration"],
@@ -51,7 +51,7 @@ export default function Projects() {
     {
       title: "Fullscreen",
       des: "See your spotify songs in fullscreen",
-      image: "/images/projects/fullscreen.png",
+      image: "/images/projects/fullscreen.webp",
       link: "https://fullscreen.remaster.in/",
       animation: "center",
       tags: ["all", "personal"],
