@@ -70,7 +70,7 @@ export default function Navbar() {
                 key={link.name}
                 className={`cursor-pointer hover:underline transition-all duration-300 ${
                   link.href === pathname ? "underline" : "no-underline"
-                } ${pathname === "/contact" ? "text-black" : "text-white"}`}
+                } ${pathname === "/contact" ? "text-white bg-black" : "text-white"}`}
                 onClick={() => {
                   setRoute(link.href);
                   const timeout = setTimeout(() => {
