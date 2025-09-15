@@ -12,14 +12,14 @@ export default function Skills() {
       name: "React",
       shorty: "react",
       link: "https://react.dev/",
-      image: "/images/skills/react.png",
+      image: "/images/skills/react.webp",
       description: "JavaScript library for building user interfaces",
     },
     {
       name: "Next.js",
       shorty: "next",
       description: "React framework for building server-side apps",
-      image: "/images/skills/next.png",
+      image: "/images/skills/next.webp",
       link: "https://nextjs.org/",
     },
     {
@@ -27,7 +27,7 @@ export default function Skills() {
       shorty: "tailwind",
       description:
         "Utility-first CSS framework for building responsive user interfaces",
-      image: "/images/skills/tailwind.png",
+      image: "/images/skills/tailwind.webp",
       link: "https://tailwindcss.com/",
     },
     {
@@ -41,58 +41,58 @@ export default function Skills() {
     {
       name: "JavaScript",
       shorty: "JavaScript",
-      image: "/images/skills/js.png",
+      image: "/images/skills/js.webp",
       description: "100%",
       link: "https://en.wikipedia.org/wiki/JavaScript",
     },
     {
       name: "Git/Github",
       shorty: "GITHUB",
-      image: "/images/skills/git.png",
+      image: "/images/skills/git.webp",
       description: "Version control system for tracking changes in code",
       link: "https://github.com/",
     },
     {
       name: "AWS",
       shorty: "aws",
-      image: "/images/skills/aws.png",
+      image: "/images/skills/aws.webp",
       link: "https://aws.amazon.com/",
     },
     {
       name: "Python",
       shorty: "python",
-      image: "/images/skills/python.png",
+      image: "/images/skills/python.webp",
       link: "https://www.python.org/",
     },
     {
       name: "Java",
       shorty: "java",
-      image: "/images/skills/java.png",
+      image: "/images/skills/java.webp",
       link: "https://www.java.com/",
     },
     {
       name: "C/C++",
       shorty: "CPP",
-      image: "/images/skills/c++.png",
+      image: "/images/skills/c++.webp",
       link: "https://en.wikipedia.org/wiki/C%2B%2B",
     },
 
     {
       name: "MongoDB",
       shorty: "mongodb",
-      image: "/images/skills/mongo.png",
+      image: "/images/skills/mongo.webp",
       link: "https://www.mongodb.com/",
     },
     {
       name: "Framer Motion",
       shorty: "framer",
-      image: "/images/skills/framer.png",
+      image: "/images/skills/framer.webp",
       link: "https://motion.dev/",
     },
     {
       name: "GSAP",
       shorty: "gsap",
-      image: "/images/skills/gsap.png",
+      image: "/images/skills/gsap.webp",
       link: "https://gsap.com/",
     },
   ];
@@ -191,7 +191,7 @@ export default function Skills() {
               {skills.map((skill, index) => {
                 return (
                   (selected === index || selected === null) && (
-                    <>
+                    <div key={index} className="w-full gap-5 flex flex-col items-center justify-center">
                       <motion.div
                         initial={{
                           opacity: 0,
@@ -206,7 +206,7 @@ export default function Skills() {
                         key={index}
                         onMouseEnter={() => setText(skill.shorty)}
                         onMouseLeave={() => setText("Skills")}
-                        className="w-fit"
+                        className="w-full"
                         onClick={() =>
                           setSelected((prev) => (prev === index ? null : index))
                         }
@@ -220,7 +220,7 @@ export default function Skills() {
                       {selected === index && (
                         <p className=" t ">{skill.description}</p>
                       )}
-                    </>
+                    </div>
                   )
                 );
               })}
