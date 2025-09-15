@@ -61,7 +61,7 @@ export default function Contact() {
     // simple contact form
     <>
       <div className="flex w-full h-full flex-row items-center justify-center relative">
-        {form.success || true ? (
+        {form.success ? (
           <>
             <div className="w-screen h-screen flex justify-center items-center flex-col">
               <div className="flex flex-row relative">
